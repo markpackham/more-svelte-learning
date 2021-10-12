@@ -4,8 +4,11 @@ import Card from "./Card.svelte"
 
 <main>
 <Card>
-	<p>This is our card</p>
-	<button>Test button</button>
+	<div>
+		<h3>Card</h3>
+		<p>This is our card</p>
+	</div>
+	<button slot="button">Test button</button>
 </Card>
 </main>
 
