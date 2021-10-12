@@ -1,14 +1,12 @@
-
 <script>
-	import Button from "./Button.svelte";
-	const log = () => {
-		console.log("Button clicked")
-	}
+import Card from "./Card.svelte"
 </script>
 
 <main>
-	<Button on:click={log} />
-	<button on:click={log}>App button</button>
+<Card>
+	<p>This is our card</p>
+	<button>Test button</button>
+</Card>
 </main>
 
 <style>

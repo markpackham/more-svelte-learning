@@ -1,9 +1,8 @@
 <script>
     export let btnText = "Component Button";
 </script>
-<div on:click>
-    <span>Click to log</span>
-    <button>{btnText}</button>
+<div class="card">
+    <button on:click>{btnText}</button>
 </div>
 
 <style>
