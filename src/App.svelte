@@ -1,4 +1,5 @@
 <script>
+	import Announcement from "./Announcement.svelte";
 	let fruits = [
 		{name: "Apple", color: "red", amount: 5, id: 1},
 		{name: "Banana", color: "yellow", amount: 7, id: 2},
@@ -6,22 +7,29 @@
 	];
 	const deleteFruit = (id) => {
 		fruits = fruits.filter((fruit) => fruit.id != id) 
+		// True: Keep it in our array
+		// False: Remove it from our array
 		console.log(fruits);
 	}
-
 </script>
 
 <main>
+	<Announcement />
+	<div class="alert">
+		This is our alert in our main app
+	</div>
 	{#each fruits as fruit (fruit.id)}
-		{#if fruit.amount < 4}
+		{#if fruit.amount < 100}
 			<div class="card">
 				<h5>{fruit.name}</h5>
 				<p>{fruit.color}</p>
 				<button on:click={() => deleteFruit(fruit.id)}>Delete</button>
 			</div>
 		{:else}
-		<p>There is no fruit in our fruit array</p>
+			<p>The amount for {fruit.name} is greater than or equal to 4</p>
 		{/if}
+	{:else}
+		<p>There is no fruit in our fruit array</p>
 	{/each}
 </main>
 
