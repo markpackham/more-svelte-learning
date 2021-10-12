@@ -1,25 +1,22 @@
 <script>
-	let name = "";
 	let src = "favicon.png";
-	let count = 0;
-	const incrementCounter = () => {
-		count += 1;
+
+	let firstName = "";
+	let lastName = "";
+
+	$: fullname = `${firstName} ${lastName}`;
+	$: {
+		console.log(firstName)
+		console.log(lastName)
 	}
 
-	const handleInput = (event) => {
-		name = event.target.value;
-	}
-
-	const resertName = () => {
-		name = "Unknown"
-	}
 </script>
 
 <main>
-	<h1>Hello {name}</h1>
+	<h1>Hello {fullname}</h1>
 
-	<input type="text" bind:value={name}>
-	<button on:click={resertName}>Set name to unknown</button>
+	<input type="text" bind:value={firstName}>
+	<input type="text" bind:value={lastName}>
 
 	<img {src} alt="Svelte logo">
 </main>
