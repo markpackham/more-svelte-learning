@@ -1,27 +1,41 @@
 <script>
-	let src = "favicon.png";
-
-	let firstName = "";
-	let lastName = "";
-
-	$: fullname = `${firstName} ${lastName}`;
-	$: {
-		console.log(firstName)
-		console.log(lastName)
+	let fruits = [
+		{name: "Apple", color: "red", amount: 5, id: 1},
+		{name: "Banana", color: "yellow", amount: 7, id: 2},
+		{name: "Grape", color: "purple", amount: 3, id: 3}
+	];
+	const deleteFruit = (id) => {
+		fruits = fruits.filter((fruit) => fruit.id != id) 
+		console.log(fruits);
 	}
 
 </script>
 
 <main>
-	<h1>Hello {fullname}</h1>
-
-	<input type="text" bind:value={firstName}>
-	<input type="text" bind:value={lastName}>
-
-	<img {src} alt="Svelte logo">
+	{#each fruits as fruit (fruit.id)}
+		{#if fruit.amount < 4}
+			<div class="card">
+				<h5>{fruit.name}</h5>
+				<p>{fruit.color}</p>
+				<button on:click={() => deleteFruit(fruit.id)}>Delete</button>
+			</div>
+		{:else}
+		<p>There is no fruit in our fruit array</p>
+		{/if}
+	{/each}
 </main>
 
 <style>
+	h5, p {
+		margin: 4px 0px;
+	}
+	.card {
+		min-width: 400px;
+		padding: 8px;
+		border-radius: 20px;
+		border: 2px solid gray;
+		margin-top: 8px;
+	}
 	main {
 		display: flex;
 		flex-direction: column;
