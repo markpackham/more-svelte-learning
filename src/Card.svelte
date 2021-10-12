@@ -1,8 +1,8 @@
 <script></script>
 
 <div class="card">
-    <slot name="button"/>
     <slot></slot>
+    <slot name="button"/>
 </div>
 
 <style>
